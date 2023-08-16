@@ -48,15 +48,15 @@ dependencies {
     //// Retrofit: Para consumir APIs
     def retrofit_version  = "2.9.0"
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter_gson:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
 
     //// TODO: Saber para que se usa
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
 
     //// Navegación entre fragmentos
     def nav_version = "2.6.0"
-    implementation "android.arch.navigation:navigation-fragment-ktx:$nav_version"
-    implementation "android.arch.navigation:navigation-ui-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
     //// Para la carga de imágenes
     implementation "io.coil-kt:coil:2.4.0"
