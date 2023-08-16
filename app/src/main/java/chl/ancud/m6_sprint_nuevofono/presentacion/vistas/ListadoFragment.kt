@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import chl.ancud.m6_sprint_nuevofono.R
+import chl.ancud.m6_sprint_nuevofono.data.Repositorio
 import chl.ancud.m6_sprint_nuevofono.databinding.FragmentListadoBinding
 import chl.ancud.m6_sprint_nuevofono.presentacion.adaptadores.AdapterListado
 
@@ -32,6 +33,8 @@ class ListadoFragment : Fragment() {
     private fun initAdapter() {
         val adapter = AdapterListado()
         binding.rvListado.adapter = adapter
+
+        adapter.setData()
     }
 
 }

@@ -30,6 +30,11 @@ class AdapterListado: RecyclerView.Adapter<AdapterListado.ItemListadoViewHolder>
         return listaTelefonos.size
     }
 
+    fun setData(telefonos: List<TelefonoListado>) {
+        this.listaTelefonos.clear()
+        this.listaTelefonos.addAll(telefonos)
+    }
+
     class ItemListadoViewHolder(val binding: ItemListadoTelefonoBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(telefono: TelefonoListado) {
             binding.txvNombre.text = telefono.name
