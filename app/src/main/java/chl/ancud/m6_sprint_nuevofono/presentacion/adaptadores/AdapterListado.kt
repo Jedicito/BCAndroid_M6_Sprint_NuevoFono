@@ -33,6 +33,7 @@ class AdapterListado: RecyclerView.Adapter<AdapterListado.ItemListadoViewHolder>
     fun setData(telefonos: List<TelefonoListadoEntity>) {
         this.listaTelefonos.clear()
         this.listaTelefonos.addAll(telefonos)
+        notifyDataSetChanged()
     }
 
     class ItemListadoViewHolder(val binding: ItemListadoTelefonoBinding): RecyclerView.ViewHolder(binding.root) {

@@ -23,7 +23,7 @@ class ListadoFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentListadoBinding.inflate(layoutInflater)
-        initListeners()
+        ///initListeners()
         initAdapter()
         return binding.root
     }
@@ -34,6 +34,7 @@ class ListadoFragment : Fragment() {
 
     private fun initAdapter() {
         val adapter = AdapterListado()
+        telefonoViewModel.getAllTelefonos()
         binding.rvListado.adapter = adapter
         telefonoViewModel.telefonosLiveData().observe(viewLifecycleOwner) {
             adapter.setData(it)
