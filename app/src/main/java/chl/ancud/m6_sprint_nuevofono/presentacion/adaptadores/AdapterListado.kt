@@ -1,8 +1,11 @@
 package chl.ancud.m6_sprint_nuevofono.presentacion.adaptadores
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import chl.ancud.m6_sprint_nuevofono.R
 import chl.ancud.m6_sprint_nuevofono.data.local.TelefonoListadoEntity
 import chl.ancud.m6_sprint_nuevofono.data.remote.TelefonoListado
 import chl.ancud.m6_sprint_nuevofono.databinding.ItemListadoTelefonoBinding
@@ -41,6 +44,12 @@ class AdapterListado: RecyclerView.Adapter<AdapterListado.ItemListadoViewHolder>
             binding.txvNombre.text = telefono.name
             binding.txvPrecio.text = telefono.price.toString()
             binding.imgFoto.load(telefono.image)
+
+            var bundle = Bundle()
+            binding.constraintLayoutItemListado.setOnClickListener {
+                bundle.putInt("id", it.id)
+                Navigation.findNavController(binding.root).navigate(R.id.action_listadoFragment_to_detalleFragment, bundle)
+            }
         }
     }
 

@@ -2,14 +2,18 @@ package chl.ancud.m6_sprint_nuevofono.data
 
 import androidx.lifecycle.LiveData
 import chl.ancud.m6_sprint_nuevofono.data.local.TelefonoDao
+import chl.ancud.m6_sprint_nuevofono.data.local.TelefonoDetalleEntity
 import chl.ancud.m6_sprint_nuevofono.data.local.TelefonoListadoEntity
 import chl.ancud.m6_sprint_nuevofono.data.remote.TelefonoAPI
+import chl.ancud.m6_sprint_nuevofono.data.remote.TelefonoDetalle
 import chl.ancud.m6_sprint_nuevofono.data.remote.TelefonoListado
 import retrofit2.Response
 
 class Repositorio(private val telefonoAPI: TelefonoAPI, private val telefonoDao: TelefonoDao) {
 
-    fun obtenerTelefonos(): LiveData<List<TelefonoListadoEntity>> = telefonoDao.getTelefonos()
+    fun obtenerTelefonosLiveData(): LiveData<List<TelefonoListadoEntity>> = telefonoDao.getTelefonos()
+
+    fun obtenerTelefonoLiveData(id: Long): LiveData<TelefonoDetalleEntity> = telefonoDao.getTelefonoDetalle(id)
 
 
     suspend fun getTelefonos() {
@@ -20,8 +24,27 @@ class Repositorio(private val telefonoAPI: TelefonoAPI, private val telefonoDao:
                 val telefonoListadoEntity = it.map {
                     it.transformar()
                 }
-                telefonoDao.insertTelefono(telefonoListadoEntity)
+                telefonoDao.insertTelefonos(telefonoListadoEntity)
             }
+        }
+    }
+
+    suspend fun getTelefonoDetalle(id: Long) {
+        val response: Response<TelefonoDetalle> = telefonoAPI.getTelefonoDetalle(id)
+        if(response.isSuccessful) {
+            val resp: TelefonoDetalle? = response.body()
+            resp?.let {
+                val telefonoDetalleEntity = TelefonoDetalleEntity(
+                    it.id,
+                    it.name,
+                    it.price,
+                    it.image,
+                    it.description,
+                    it.lastPrice,
+                    it.credit
+                )
+            }
+            telefonoDao.insertTelefono()
         }
     }
 }
@@ -32,4 +55,14 @@ fun TelefonoListado.transformar(): TelefonoListadoEntity = TelefonoListadoEntity
     this.name,
     this.price,
     this.image
+)
+
+fun TelefonoDetalle.transformar(): TelefonoDetalleEntity = TelefonoDetalleEntity(
+    this.id,
+    this.name,
+    this.price,
+    this.image,
+    this.description,
+    this.lastPrice,
+    this.credit
 )

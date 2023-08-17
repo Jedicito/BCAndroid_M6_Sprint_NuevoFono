@@ -21,6 +21,6 @@ class TelefonoViewModel(application: Application): AndroidViewModel(application)
         repositorio.getTelefonos()
     }
 
-    fun telefonosLiveData() = repositorio.obtenerTelefonos()
+    fun telefonosLiveData() = repositorio.obtenerTelefonosLiveData()
 
 }

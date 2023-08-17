@@ -9,5 +9,14 @@
         android:id="@+id/listadoFragment"
         android:name="chl.ancud.m6_sprint_nuevofono.presentacion.vistas.ListadoFragment"
         android:label="fragment_listado"
-        tools:layout="@layout/fragment_listado" />
+        tools:layout="@layout/fragment_listado" >
+        <action
+            android:id="@+id/action_listadoFragment_to_detalleFragment"
+            app:destination="@id/detalleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalleFragment"
+        android:name="chl.ancud.m6_sprint_nuevofono.presentacion.vistas.DetalleFragment"
+        android:label="fragment_detalle"
+        tools:layout="@layout/fragment_detalle" />
 </navigation>

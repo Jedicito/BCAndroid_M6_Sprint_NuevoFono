@@ -30,6 +30,7 @@ class ListadoFragment : Fragment() {
 
     private fun initListeners() {
 
+
     }
 
     private fun initAdapter() {
