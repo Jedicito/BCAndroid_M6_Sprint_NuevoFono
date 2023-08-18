@@ -28,10 +28,6 @@ class ListadoFragment : Fragment() {
         return binding.root
     }
 
-    private fun initListeners() {
-
-
-    }
 
     private fun initAdapter() {
         val adapter = AdapterListado()

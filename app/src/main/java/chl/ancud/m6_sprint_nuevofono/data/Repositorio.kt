@@ -51,13 +51,14 @@ class Repositorio(private val telefonoAPI: TelefonoAPI, private val telefonoDao:
 }
 
 
-fun TelefonoListado.transformar(): TelefonoListadoEntity = TelefonoListadoEntity(
+/*fun TelefonoListado.transformar(): TelefonoListadoEntity = TelefonoListadoEntity(
     this.id,
     this.name,
     this.price,
     this.image
-)
+)*/
 
+/*
 fun TelefonoDetalle.transformar(): TelefonoDetalleEntity = TelefonoDetalleEntity(
     this.id,
     this.name,
@@ -66,4 +67,4 @@ fun TelefonoDetalle.transformar(): TelefonoDetalleEntity = TelefonoDetalleEntity
     this.description,
     this.lastPrice,
     this.credit
-)
+)*/
