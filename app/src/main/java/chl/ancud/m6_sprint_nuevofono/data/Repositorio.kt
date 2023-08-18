@@ -1,5 +1,6 @@
 package chl.ancud.m6_sprint_nuevofono.data
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import chl.ancud.m6_sprint_nuevofono.data.local.TelefonoDao
 import chl.ancud.m6_sprint_nuevofono.data.local.TelefonoDetalleEntity
@@ -30,14 +31,21 @@ class Repositorio(private val telefonoAPI: TelefonoAPI, private val telefonoDao:
     }
 
     suspend fun getTelefonoDetalle(id: Long) {
-        val response = telefonoAPI.getTelefonoDetalle(id)
-        if (response.isSuccessful) {
-            val resp = response.body()
-            resp?.let {
-                val telefonoDetalleEntity = it.transformar()
-                telefonoDao.insertTelefonoDetalle(telefonoDetalleEntity)
+        try {
+            Log.d("repo34", "Llega $id")
+            val response = telefonoAPI.getTelefonoDetalle(id)
+            Log.d("repo36", response.isSuccessful.toString())
+            if (response.isSuccessful) {
+                val resp = response.body()
+                Log.d("repo39", resp.toString())
+                resp?.let {
+                    val telefonoDetalleEntity = it.transformar()
+                    telefonoDao.insertTelefonoDetalle(telefonoDetalleEntity)
+                }
             }
 
+        }catch (e: Exception) {
+            Log.e("repo try", e.toString())
         }
     }
 }
