@@ -30,21 +30,14 @@ class Repositorio(private val telefonoAPI: TelefonoAPI, private val telefonoDao:
     }
 
     suspend fun getTelefonoDetalle(id: Long) {
-        val response: Response<TelefonoDetalle> = telefonoAPI.getTelefonoDetalle(id)
-        if(response.isSuccessful) {
-            val resp: TelefonoDetalle? = response.body()
+        val response = telefonoAPI.getTelefonoDetalle(id)
+        if (response.isSuccessful) {
+            val resp = response.body()
             resp?.let {
-                val telefonoDetalleEntity = TelefonoDetalleEntity(
-                    it.id,
-                    it.name,
-                    it.price,
-                    it.image,
-                    it.description,
-                    it.lastPrice,
-                    it.credit
-                )
+                val telefonoDetalleEntity = it.transformar()
+                telefonoDao.insertTelefonoDetalle(telefonoDetalleEntity)
             }
-            telefonoDao.insertTelefono()
+
         }
     }
 }

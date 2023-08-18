@@ -10,3 +10,4 @@ class TelefonoListadoEntity(
     val price: Long,
     val image: String
 )
+

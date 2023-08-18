@@ -18,7 +18,7 @@ interface TelefonoDao {
     fun getTelefonoDetalle(id: Long): LiveData<TelefonoDetalleEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertTelefonoDetalle(telefonoDetalleEntity: TelefonoDetalleEntity: )
+    suspend fun insertTelefonoDetalle(telefonoDetalleEntity: TelefonoDetalleEntity)
 
 
 }

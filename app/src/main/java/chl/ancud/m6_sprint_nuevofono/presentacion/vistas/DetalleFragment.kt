@@ -9,17 +9,18 @@ import androidx.fragment.app.activityViewModels
 import chl.ancud.m6_sprint_nuevofono.R
 import chl.ancud.m6_sprint_nuevofono.databinding.FragmentDetalleBinding
 import chl.ancud.m6_sprint_nuevofono.presentacion.TelefonoViewModel
+import coil.load
 
 
 class DetalleFragment : Fragment() {
-    private var paramId: Int? = null
+    private var paramId: Long? = null
     lateinit var binding: FragmentDetalleBinding
     private val telefonoViewModel: TelefonoViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            paramId = it.getInt("id")
+            paramId = it.getLong("id")
         }
     }
 
@@ -29,12 +30,18 @@ class DetalleFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentDetalleBinding.inflate(layoutInflater)
-        setComponents()
-        return inflater.inflate(R.layout.fragment_detalle, container, false)
+        setComponentes(paramId!!)
+        return binding.root
     }
 
-    private fun setComponents() {
-        binding.tvxNombreDetalle.text = paramId
+    private fun setComponentes(id: Long) {
+        telefonoViewModel.getTelefonoDetalle(id)
+        telefonoViewModel.telefonoLiveData(id).observe(viewLifecycleOwner) {
+            binding.tvxNombreDetalle.text = it.name
+            binding.imgFotoDetalle.load(it.image)
+            binding.txvDescripcionDetalle.text = it.description
+            binding.txvPrecioDetalle.text = it.price.toString()
+        }
     }
 
 }

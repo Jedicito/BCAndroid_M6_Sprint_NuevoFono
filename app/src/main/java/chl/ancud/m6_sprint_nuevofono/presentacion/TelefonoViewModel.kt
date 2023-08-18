@@ -21,6 +21,11 @@ class TelefonoViewModel(application: Application): AndroidViewModel(application)
         repositorio.getTelefonos()
     }
 
+    fun getTelefonoDetalle(id: Long) = viewModelScope.launch {
+        repositorio.getTelefonoDetalle(id)
+    }
+
     fun telefonosLiveData() = repositorio.obtenerTelefonosLiveData()
+    fun telefonoLiveData(id: Long) = repositorio.obtenerTelefonoLiveData(id)
 
 }

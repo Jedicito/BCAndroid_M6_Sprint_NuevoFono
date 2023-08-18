@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.Room.databaseBuilder
 import androidx.room.RoomDatabase
 
-@Database(entities = [TelefonoListadoEntity::class], version = 1)
+@Database(entities = [TelefonoListadoEntity::class, TelefonoDetalleEntity::class], version = 1)
 abstract class TelefonoDatabase: RoomDatabase() {
 
     abstract fun getITelefonoDao(): TelefonoDao

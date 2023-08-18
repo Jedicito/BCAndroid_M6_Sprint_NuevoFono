@@ -45,13 +45,11 @@ class AdapterListado: RecyclerView.Adapter<AdapterListado.ItemListadoViewHolder>
             binding.txvPrecio.text = telefono.price.toString()
             binding.imgFoto.load(telefono.image)
 
-            var bundle = Bundle()
             binding.constraintLayoutItemListado.setOnClickListener {
-                bundle.putInt("id", it.id)
+                val bundle = Bundle()
+                bundle.putLong("id", telefono.id.toLong())
                 Navigation.findNavController(binding.root).navigate(R.id.action_listadoFragment_to_detalleFragment, bundle)
             }
         }
     }
-
-
 }
