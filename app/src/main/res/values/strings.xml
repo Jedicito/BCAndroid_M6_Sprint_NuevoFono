@@ -5,6 +5,9 @@
     <string name="txvPrecioDetalle">Precio: \$%s</string>
     <string name="flbCorreo">Enviar correo con el producto</string>
     <string name="correoAsunto">Consulta %s</string>
-    <string name="correoMensaje">Hola\nVi el producto %1s de valor $%2s y me gustaria que me contactaran a este correo o al siguiente número __________\n\nQuedo atento.</string>
+    <string name="correoMensaje">Hola.\nVi el producto %1s de valor $%2s y me gustaria que me contactaran a este correo o al siguiente número __________\n\nQuedo atento.</string>
     <string name="flbVolver">Volver al listado</string>
+    <string name="txvPrecioAnterior">Precio Anterior $%s</string>
+    <string name="txvAceptaTarjetas_SI">Se aceptan tarjetas</string>
+    <string name="txvAceptaTarjetas_NO">No se aceptan tarjetas</string>
 </resources>

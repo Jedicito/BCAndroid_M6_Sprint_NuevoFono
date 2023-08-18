@@ -48,6 +48,12 @@ class DetalleFragment : Fragment() {
                 binding.imgFotoDetalle.load(it.image)
                 binding.txvDescripcionDetalle.text = it.description
                 binding.txvPrecioDetalle.text = getString(R.string.txvPrecioDetalle, precio)
+                binding.txvPrecioAnterior.text = getString(R.string.txvPrecioAnterior, it.lastPrice.toString())
+                if (it.credit){
+                    binding.txvAceptaTarjetas.text = getString(R.string.txvAceptaTarjetas_SI)
+                } else {
+                    binding.txvAceptaTarjetas.text = getString(R.string.txvAceptaTarjetas_NO)
+                }
 
                 binding.flbCorreo.setOnClickListener {
                     val intentCorreo = Intent(Intent.ACTION_SENDTO).apply {

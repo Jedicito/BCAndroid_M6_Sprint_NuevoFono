@@ -5,6 +5,7 @@
     android:id="@+id/constraintLayoutListado"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/ligth_primary"
     tools:context=".presentacion.vistas.ListadoFragment">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -26,6 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/txv_Titulo"
+        android:textColor="@color/primary_text"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
