@@ -33,7 +33,7 @@ class Repositorio(private val telefonoAPI: TelefonoAPI, private val telefonoDao:
     suspend fun getTelefonoDetalle(id: Long) {
         try {
             Log.d("repo34", "Llega $id")
-            val response = telefonoAPI.getTelefonoDetalle(id)
+            val response = telefonoAPI.getTelefonoDetalle(id.toString()) /// Última línea que ejecuta
             Log.d("repo36", response.isSuccessful.toString())
             if (response.isSuccessful) {
                 val resp = response.body()

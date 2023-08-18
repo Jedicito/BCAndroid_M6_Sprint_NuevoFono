@@ -10,5 +10,5 @@ interface TelefonoAPI {
     suspend fun getData(): Response<List<TelefonoListado>>
 
     @GET("details/{id}")
-    suspend fun getTelefonoDetalle(@Path("id") id: Long): Response<TelefonoDetalle>
+    suspend fun getTelefonoDetalle(@Path("id") id: String): Response<TelefonoDetalle>
 }

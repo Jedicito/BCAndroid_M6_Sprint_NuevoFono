@@ -18,5 +18,9 @@
         android:id="@+id/detalleFragment"
         android:name="chl.ancud.m6_sprint_nuevofono.presentacion.vistas.DetalleFragment"
         android:label="fragment_detalle"
-        tools:layout="@layout/fragment_detalle" />
+        tools:layout="@layout/fragment_detalle" >
+        <action
+            android:id="@+id/action_detalleFragment_to_listadoFragment"
+            app:destination="@id/listadoFragment" />
+    </fragment>
 </navigation>
